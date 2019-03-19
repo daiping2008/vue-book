@@ -24,6 +24,14 @@
           <span :style="styleRight">A</span>
         </div>
       </div>
+      <div class="setting-font-family" @click="showFontFamilyPopup">
+        <div class="setting-font-family-text-wrapper">
+          <span class="setting-font-family-text">{{defaultFontFamily}}</span>
+        </div>
+        <div class="setting-font-family-icon-wrapper">
+          <i class="iconfont">&#xe619;</i>
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -35,27 +43,28 @@ export default {
   mixins: [ebookMixin],
   data () {
     return {
-      fontSizeList: [],
+      fontSizeList: FONT_SIZE_LIST,
       styleLeft: {},
       styleRight: {}
     }
   },
   watch: {
     settingVisible () {
-      this.fontSizeList = FONT_SIZE_LIST
       this.styleLeft = {
-        fontSize: FONT_SIZE_LIST[0].fontSize + 'px'
+        fontSize: this.fontSizeList[0].fontSize + 'px'
       }
       this.styleRight = {
-        fontSize: FONT_SIZE_LIST[FONT_SIZE_LIST.length - 1].fontSize + 'px'
+        fontSize: this.fontSizeList[this.fontSizeList.length - 1].fontSize + 'px'
       }
-      console.log(this.styleLeft, this.styleRight)
     }
   },
   methods: {
     setFontSize (fontSize) {
       this.setDefaultFontSize(fontSize)
       this.currentBook.rendition.themes.fontSize(fontSize)
+    },
+    showFontFamilyPopup () {
+      this.setFontFamilyVisible(true)
     }
   }
 }
@@ -64,6 +73,8 @@ export default {
 <style lang="scss" scoped>
 @import '~@/assets/styles/index.scss';
 .setting-wrapper{
+  display: flex;
+  flex-direction: column;
   position: absolute;
   bottom: px2rem(48);
   left: 0;
@@ -133,6 +144,17 @@ export default {
           }
         }
       }
+    }
+  }
+  .setting-font-family{
+    flex:1;
+    font-size: px2rem(14);
+    @include center;
+    .setting-font-family-text-wrapper{
+      @include center;
+    }
+    .setting-font-family-icon-wrapper {
+      @include center;
     }
   }
 }

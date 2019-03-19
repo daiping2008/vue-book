@@ -13,5 +13,11 @@ export default {
   },
   setCurrentBook: ({ commit }, book) => {
     return commit('SET_CURRENTBOOK', book)
+  },
+  setDefaultFontFamily: ({ commit }, fontFamily) => {
+    return commit('SET_DEFAULTFONTFAMILY', fontFamily)
+  },
+  setFontFamilyVisible: ({ commit }, fontFamilyVisible) => {
+    return commit('SET_FONTFAMILYVISIBLE', fontFamilyVisible)
   }
 }

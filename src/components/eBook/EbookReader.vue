@@ -7,6 +7,7 @@
 <script>
 import { ebookMixin } from '@/utils/mixin'
 import Epub from 'epubjs'
+import { Promise } from 'q'
 global.ePub = Epub
 export default {
   mixins: [ebookMixin],
@@ -20,6 +21,7 @@ export default {
     toggleTitleAndMenu () {
       if (this.setMenuVisible) {
         this.setSettingVisible(-1)
+        this.setFontFamilyVisible(false)
       }
       this.setMenuVisible(!this.menuVisible)
     },
@@ -38,11 +40,10 @@ export default {
     hideTitleAndMenu () {
       this.setMenuVisible(false)
       this.setSettingVisible(-1)
+      this.setFontFamilyVisible(false)
     },
     initEpub () {
-      const baseUrl = 'http://192.168.43.9:3000/epub/'
-      const url = baseUrl + this.fileName + '.epub'
-      console.log(url)
+      const url = `${process.env.VUE_APP_EPUB_URL}/${this.fileName}.epub`
       this.book = new Epub(url)
       this.rendition = this.book.renderTo('read', {
         width: window.innerWidth,
@@ -67,6 +68,14 @@ export default {
         }
         event.preventDefault()
         event.stopPropagation()
+      })
+      this.rendition.hooks.content.register(contents => {
+        Promise.all([
+          contents.addStylesheet(`${process.env.VUE_APP_RES_URL}/fonts/cabin.css`),
+          contents.addStylesheet(`${process.env.VUE_APP_RES_URL}/fonts/daysOne.css`),
+          contents.addStylesheet(`${process.env.VUE_APP_RES_URL}/fonts/montserrat.css`),
+          contents.addStylesheet(`${process.env.VUE_APP_RES_URL}/fonts/tangerine.css`)
+        ])
       })
     }
 

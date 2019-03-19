@@ -4,7 +4,9 @@ const book = {
     menuVisible: false,
     settingVisible: -1, // -1 不显示 0 设置字号 1  2   3
     defaultFontSize: 18,
-    currentBook: null
+    currentBook: null,
+    defaultFontFamily: 'Default',
+    fontFamilyVisible: false
   },
   mutations: {
     'SET_FILENAME': (state, fileName) => {
@@ -21,6 +23,12 @@ const book = {
     },
     'SET_CURRENTBOOK': (state, book) => {
       state.currentBook = book
+    },
+    'SET_DEFAULTFONTFAMILY': (state, fontFamily) => {
+      state.defaultFontFamily = fontFamily
+    },
+    'SET_FONTFAMILYVISIBLE': (state, fontFamilyVisible) => {
+      state.fontFamilyVisible = fontFamilyVisible
     }
   }
 }
