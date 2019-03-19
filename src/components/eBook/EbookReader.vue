@@ -15,7 +15,6 @@ export default {
     this.setFileName(fileName).then(() => {
       this.initEpub()
     })
-    this.nextPage()
   },
   methods: {
     toggleTitleAndMenu () {
@@ -41,14 +40,15 @@ export default {
       this.setSettingVisible(-1)
     },
     initEpub () {
-      const baseUrl = 'http://192.168.1.108:3000/epub/'
+      const baseUrl = 'http://192.168.43.9:3000/epub/'
       const url = baseUrl + this.fileName + '.epub'
+      console.log(url)
       this.book = new Epub(url)
       this.rendition = this.book.renderTo('read', {
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
+        method: 'default'
       })
-      this.book.rendition.themes.fontSize(20)
       this.setCurrentBook(this.book)
       this.rendition.display()
       this.rendition.on('touchstart', event => {

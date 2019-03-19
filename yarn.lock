@@ -4868,7 +4868,7 @@ jsprim@^1.2.2:
 
 jszip@^3.1.5:
   version "3.2.0"
-  resolved "http://registry.npm.taobao.org/jszip/download/jszip-3.2.0.tgz#1c179e8692777490ca4e9b8f3ced08f9b820da2c"
+  resolved "http://registry.npm.taobao.org/jszip/download/jszip-3.2.0.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fjszip%2Fdownload%2Fjszip-3.2.0.tgz#1c179e8692777490ca4e9b8f3ced08f9b820da2c"
   integrity sha1-HBeehpJ3dJDKTpuPPO0I+bgg2iw=
   dependencies:
     lie "~3.3.0"
