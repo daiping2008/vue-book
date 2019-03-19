@@ -29,6 +29,7 @@
 
 <script>
 import { ebookMixin } from '@/utils/mixin'
+import { saveFontFamily } from '@/utils/localStorage'
 import { FONT_FAMILY } from '@/utils/book'
 export default {
   data () {
@@ -45,6 +46,7 @@ export default {
       } else {
         this.currentBook.rendition.themes.font(font)
       }
+      saveFontFamily(this.fileName, font)
     },
     hideFontFamilySetting () {
       this.setFontFamilyVisible(false)

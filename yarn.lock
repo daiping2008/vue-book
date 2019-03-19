@@ -8336,6 +8336,11 @@ wcwidth@^1.0.1:
   dependencies:
     defaults "^1.0.3"
 
+web-storage-cache@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/web-storage-cache/download/web-storage-cache-1.0.3.tgz#2eecc4f1f88c9c3c4c185381c9fdf5fe8d0c908c"
+  integrity sha1-LuzE8fiMnDxMGFOByf31/o0MkIw=
+
 webpack-bundle-analyzer@^3.0.4:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/webpack-bundle-analyzer/download/webpack-bundle-analyzer-3.1.0.tgz#2f19cbb87bb6d4f3cb4e59cb67c837bd9436e89d"
