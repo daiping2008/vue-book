@@ -92,6 +92,7 @@ export default {
         this.initTheme()
         this.initFontSize()
         this.initFontFamily()
+        this.initGlobalStyle()
       })
       this.rendition.on('touchstart', event => {
         this.touchStart = event.changedTouches[0].clientX
