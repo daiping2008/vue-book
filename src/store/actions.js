@@ -19,5 +19,8 @@ export default {
   },
   setFontFamilyVisible: ({ commit }, fontFamilyVisible) => {
     return commit('SET_FONTFAMILYVISIBLE', fontFamilyVisible)
+  },
+  setDefaultTheme: ({ commit }, theme) => {
+    return commit('SET_DEFAULTTHEME', theme)
   }
 }

@@ -10,7 +10,9 @@ import {
   getFontSize,
   saveFontSize,
   getFontFamily,
-  saveFontFamily } from '@/utils/localStorage'
+  saveFontFamily,
+  getTheme,
+  saveTheme } from '@/utils/localStorage'
 import Epub from 'epubjs'
 global.ePub = Epub
 export default {
@@ -64,6 +66,19 @@ export default {
         this.setDefaultFontFamily(font)
       }
     },
+    initTheme () {
+      this.themeList.forEach(theme => {
+        this.rendition.themes.register(theme.name, theme.style)
+      })
+
+      const theme = getTheme(this.fileName)
+      if (!theme) {
+        saveTheme(this.fileName, 'Default')
+      } else {
+        this.rendition.themes.select(theme)
+        this.setDefaultTheme(theme)
+      }
+    },
     initEpub () {
       const url = `${process.env.VUE_APP_EPUB_URL}/${this.fileName}.epub`
       this.book = new Epub(url)
@@ -74,6 +89,7 @@ export default {
       })
       this.setCurrentBook(this.book)
       this.rendition.display().then(() => {
+        this.initTheme()
         this.initFontSize()
         this.initFontFamily()
       })

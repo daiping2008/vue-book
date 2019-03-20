@@ -9,7 +9,7 @@
           <div class="icon-wrapper">
             <i class="iconfont">&#xe61e;</i>
           </div>
-          <div class="icon-wrapper">
+          <div @click="showSetting(1)" class="icon-wrapper">
             <i class="iconfont">&#xe608;</i>
           </div>
           <div @click="showSetting(0)" class="icon-wrapper">
@@ -20,12 +20,14 @@
     </transition>
     <ebook-setting-font></ebook-setting-font>
     <ebook-setting-font-popup></ebook-setting-font-popup>
+    <ebook-setting-theme></ebook-setting-theme>
   </div>
 </template>
 
 <script>
 import EbookSettingFont from './EbookSettingFont'
 import EbookSettingFontPopup from './EbookSettingFontPopup'
+import EbookSettingTheme from './EbookSettingTheme'
 import { ebookMixin } from '@/utils/mixin'
 export default {
   mixins: [ebookMixin],
@@ -36,7 +38,8 @@ export default {
   },
   components: {
     EbookSettingFont,
-    EbookSettingFontPopup
+    EbookSettingFontPopup,
+    EbookSettingTheme
   }
 }
 </script>
