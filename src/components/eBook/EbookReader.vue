@@ -73,7 +73,7 @@ export default {
 
       const theme = getTheme(this.fileName)
       if (!theme) {
-        saveTheme(this.fileName, 'Default')
+        saveTheme(this.fileName, this.themeList[0].name)
       } else {
         this.rendition.themes.select(theme)
         this.setDefaultTheme(theme)
